@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create account — CouponFind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+</head>
+<body>
+  <div class="min-h-screen flex items-center justify-center px-5 relative">
+    <div class="grid-bg" style="position:absolute;inset:0;height:340px;"></div>
+    <div class="card p-8 w-full fade-up" style="max-width:440px;position:relative;">
+      <a href="/" class="flex items-center gap-2 mb-6" style="text-decoration:none;color:var(--text);">
+        <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#ffb27a);display:flex;align-items:center;justify-content:center;font-weight:900;color:#1a0f04;">C</span>
+        <span class="font-extrabold">CouponFind</span>
+      </a>
+      <h1 class="h-display" style="font-size:1.6rem;">Create your account</h1>
+      <p class="text-muted text-sm mt-1">Free forever — 10 searches a day, no card needed.</p>
+
+      <form id="form" class="mt-6 grid gap-4">
+        <div>
+          <label class="label">Name</label>
+          <input id="name" type="text" class="input" placeholder="Jane Doe" required />
+        </div>
+        <div>
+          <label class="label">Email</label>
+          <input id="email" type="email" class="input" placeholder="you@example.com" required />
+        </div>
+        <div>
+          <label class="label">Password</label>
+          <input id="password" type="password" class="input" placeholder="At least 8 characters" required />
+        </div>
+        <div id="err" class="badge badge-red hide"></div>
+        <button id="submit" class="btn btn-primary" type="submit">Create account</button>
+      </form>
+
+      <div class="mt-4 text-sm text-muted text-center">
+        Already have an account? <a href="/login" class="text-accent" style="text-decoration:none;">Sign in</a>
+      </div>
+    </div>
+  </div>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script>CFAuth.initRegister();</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CouponFind — AI Coupon Search</title>
+  <meta name="description" content="The fastest AI-powered coupon search. Understands typos, brands, and intent. Find the best working coupons in milliseconds." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+  <style> .feature-ico { width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:var(--accent-soft);color:var(--accent); } .feature-ico svg{width:22px;height:22px;} </style>
+</head>
+<body>
+  <!-- Nav -->
+  <header class="glass" style="position:sticky;top:0;z-index:50;border-left:none;border-right:none;border-top:none;">
+    <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2" style="text-decoration:none;color:var(--text);">
+        <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#ffb27a);display:flex;align-items:center;justify-content:center;font-weight:900;color:#1a0f04;">C</span>
+        <span class="font-extrabold tracking-tight" style="font-size:1.1rem;">CouponFind</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-muted">
+        <a href="#features" style="color:var(--muted);text-decoration:none;">Features</a>
+        <a href="#pricing" style="color:var(--muted);text-decoration:none;">Pricing</a>
+        <a href="#how" style="color:var(--muted);text-decoration:none;">How it works</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/login" class="btn btn-ghost btn-sm">Sign in</a>
+        <a href="/register" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="grid-bg" style="position:absolute;inset:0;height:520px;"></div>
+    <div class="max-w-4xl mx-auto px-5 pt-20 pb-10 text-center relative fade-up">
+      <div class="badge badge-accent mx-auto mb-5" style="display:inline-flex;">⚡ Sub-200ms AI search</div>
+      <h1 class="h-display gradient-text" style="font-size:clamp(2.4rem,6vw,4rem);">Find coupons that<br/>actually work.</h1>
+      <p class="text-muted mx-auto mt-5" style="max-width:600px;font-size:1.1rem;">Type it however you want — even <span class="mono text-accent">"bst niek coupn"</span>. Our engine fixes typos, detects the brand, understands your intent, and ranks the best live deals instantly.</p>
+
+      <!-- Live search -->
+      <div class="card mt-9 p-2 flex items-center gap-2" style="max-width:640px;margin-left:auto;margin-right:auto;">
+        <span style="padding-left:0.6rem;color:var(--muted);width:22px;" id="search-ico"></span>
+        <input id="q" class="input" placeholder="best amazon coupon today…" style="border:none;background:transparent;font-size:1.05rem;" autofocus />
+        <button id="go" class="btn btn-primary">Search</button>
+      </div>
+      <div class="flex flex-wrap gap-2 justify-center mt-4" id="examples"></div>
+
+      <!-- Results -->
+      <div id="results" class="mt-8 text-left"></div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="h-display text-center" style="font-size:2rem;">Built like a search engine, not a coupon list</h2>
+    <p class="text-muted text-center mt-3" style="max-width:560px;margin:0.75rem auto 0;">Pre-indexed, validated, ranked. We never scrape while you search — that's why it's instant.</p>
+    <div class="grid md:grid-cols-3 gap-5 mt-10 stagger" id="features-grid"></div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="max-w-5xl mx-auto px-5 py-10">
+    <div class="card p-8">
+      <div class="grid md:grid-cols-4 gap-6 text-center">
+        <div><div class="text-accent font-extrabold" style="font-size:1.5rem;">1</div><div class="font-semibold mt-1">Discover</div><p class="text-muted text-sm mt-1">Python engine crawls offer pages, RSS & sitemaps.</p></div>
+        <div><div class="text-accent font-extrabold" style="font-size:1.5rem;">2</div><div class="font-semibold mt-1">Structure</div><p class="text-muted text-sm mt-1">AI extracts codes, validates & dedupes them.</p></div>
+        <div><div class="text-accent font-extrabold" style="font-size:1.5rem;">3</div><div class="font-semibold mt-1">Rank</div><p class="text-muted text-sm mt-1">Scored by freshness, reliability & value.</p></div>
+        <div><div class="text-accent font-extrabold" style="font-size:1.5rem;">4</div><div class="font-semibold mt-1">Search</div><p class="text-muted text-sm mt-1">You get the best deals in milliseconds.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="h-display text-center" style="font-size:2rem;">Simple, scalable pricing</h2>
+    <p class="text-muted text-center mt-3">Start free. Upgrade when you need more searches.</p>
+    <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mt-10" id="pricing-grid">
+      <div class="skeleton" style="height:320px;"></div><div class="skeleton" style="height:320px;"></div>
+      <div class="skeleton" style="height:320px;"></div><div class="skeleton" style="height:320px;"></div>
+      <div class="skeleton" style="height:320px;"></div>
+    </div>
+  </section>
+
+  <footer class="border-t hairline mt-10">
+    <div class="max-w-6xl mx-auto px-5 py-8 flex flex-col md:flex-row items-center justify-between gap-3 text-muted text-sm">
+      <span>© <span id="year"></span> CouponFind. Built for speed.</span>
+      <div class="flex gap-5"><a href="/login" style="color:var(--muted);text-decoration:none;">Sign in</a><a href="/register" style="color:var(--muted);text-decoration:none;">Create account</a></div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/landing.js"></script>
+</body>
+</html>

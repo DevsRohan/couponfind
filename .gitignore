@@ -1,0 +1,32 @@
+# Environment / secrets
+.env
+*.env.local
+
+# PHP
+/backend/vendor/
+composer.lock
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.engine-venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Tailwind build
+node_modules/
+/frontend/assets/css/tailwind.build.css
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# Docker volumes (if bind-mounted locally)
+/data/

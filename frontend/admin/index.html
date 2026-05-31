@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission Control — CouponFind Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+</head>
+<body>
+  <div class="flex min-h-screen">
+    <aside class="glass" style="width:256px;flex:none;border-top:none;border-bottom:none;border-left:none;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;">
+      <div class="px-5 h-16 flex items-center gap-2 border-b hairline">
+        <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ffb27a);display:flex;align-items:center;justify-content:center;font-weight:900;color:#1a0f04;">C</span>
+        <div style="line-height:1.05;"><div class="font-extrabold text-sm">CouponFind</div><div class="text-muted" style="font-size:0.68rem;">Mission Control</div></div>
+      </div>
+      <nav id="nav" class="p-3 grid gap-1" style="flex:1;overflow-y:auto;"></nav>
+      <div class="p-3 border-t hairline">
+        <a href="/app" class="nav-item">← Back to app</a>
+      </div>
+    </aside>
+    <main style="flex:1;min-width:0;">
+      <header class="glass flex items-center justify-between px-6 h-16" style="position:sticky;top:0;z-index:30;border-left:none;border-right:none;border-top:none;">
+        <div class="flex items-center gap-2"><span class="dot ok" id="health-dot"></span><span id="health-text" class="text-sm text-muted">checking…</span></div>
+        <div class="flex items-center gap-3">
+          <button onclick="UI.openCmdk()" class="btn btn-ghost btn-sm">⌘K</button>
+          <div class="flex items-center gap-2"><span id="avatar" style="width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;"></span><span id="user-name" class="text-sm font-semibold hidden md:block"></span></div>
+          <button id="logout" class="btn btn-ghost btn-sm">Logout</button>
+        </div>
+      </header>
+      <div id="view" class="p-6 max-w-7xl mx-auto"></div>
+    </main>
+  </div>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/admin.js"></script>
+</body>
+</html>
