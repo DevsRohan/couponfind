@@ -198,8 +198,8 @@ final class AuthController
 
         $refresh = Password::randomToken(32);
         $this->db->execute(
-            'INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES (?,?, DATE_ADD(NOW(), INTERVAL ? SECOND))',
-            [(int) $user['id'], Password::hashToken($refresh), $refreshTtl]
+            'INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES (?,?,?)',
+            [(int) $user['id'], Password::hashToken($refresh), date('Y-m-d H:i:s', time() + $refreshTtl)]
         );
 
         $csrf = Csrf::generate();

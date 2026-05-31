@@ -58,31 +58,31 @@ final class SearchLogRepository
     public function topQueries(int $limit = 10, int $days = 30): array
     {
         $limit = max(1, min(50, $limit));
+        $days = max(1, $days);
         return $this->db->all(
             "SELECT query_normalized AS term, COUNT(*) AS hits
              FROM search_logs
-             WHERE created_at >= DATE_SUB(NOW(), INTERVAL ? DAY) AND query_normalized IS NOT NULL AND query_normalized <> ''
-             GROUP BY query_normalized ORDER BY hits DESC LIMIT $limit",
-            [$days]
+             WHERE created_at >= DATE_SUB(NOW(), INTERVAL $days DAY) AND query_normalized IS NOT NULL AND query_normalized <> ''
+             GROUP BY query_normalized ORDER BY hits DESC LIMIT $limit"
         );
     }
 
     /** Daily search volume for charts. */
     public function dailyVolume(int $days = 14): array
     {
+        $days = max(1, $days);
         return $this->db->all(
             "SELECT DATE(created_at) AS day, COUNT(*) AS hits
-             FROM search_logs WHERE created_at >= DATE_SUB(NOW(), INTERVAL ? DAY)
-             GROUP BY DATE(created_at) ORDER BY day ASC",
-            [$days]
+             FROM search_logs WHERE created_at >= DATE_SUB(NOW(), INTERVAL $days DAY)
+             GROUP BY DATE(created_at) ORDER BY day ASC"
         );
     }
 
     public function avgLatencyMs(int $days = 7): float
     {
+        $days = max(1, $days);
         return (float) $this->db->scalar(
-            'SELECT COALESCE(AVG(took_ms),0) FROM search_logs WHERE created_at >= DATE_SUB(NOW(), INTERVAL ? DAY)',
-            [$days]
+            "SELECT COALESCE(AVG(took_ms),0) FROM search_logs WHERE created_at >= DATE_SUB(NOW(), INTERVAL $days DAY)"
         );
     }
 }
