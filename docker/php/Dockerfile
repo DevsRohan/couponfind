@@ -2,7 +2,7 @@ FROM php:8.3-fpm-alpine
 
 # System deps + PHP extensions required by the app
 RUN apk add --no-cache \
-        git unzip icu-dev oniguruma-dev curl \
+        git unzip icu-dev oniguruma-dev curl linux-headers ${PHPIZE_DEPS} \
     && docker-php-ext-install pdo pdo_mysql intl opcache \
     && pecl install redis \
     && docker-php-ext-enable redis
